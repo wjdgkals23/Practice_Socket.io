@@ -1,0 +1,26 @@
+{
+  "name": "Practice_Socket.io",
+  "version": "1.0.0",
+  "description": "Study Socket.io for Denl Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjdgkals23/Practice_Socket.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wjdgkals23/Practice_Socket.io/issues"
+  },
+  "homepage": "https://github.com/wjdgkals23/Practice_Socket.io#readme",
+  "dependencies": {
+    "express": "4.16.3",
+    "socket.io": "2.1.0",
+    "ws": "^5.1.1"
+  }
+}
