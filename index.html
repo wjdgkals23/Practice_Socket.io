@@ -23,10 +23,11 @@
 <script>
     $(function () {
         var socket = io();
-
+        var rooms = "aaa";
         socket.emit("login", {
             name: makeRandomName(),
-            userid: "wjdgkals74@gmail.com"
+            userid: "wjdgkals74@gmail.com",
+            rooms : rooms
         });
 
         socket.on("login", function(data) {

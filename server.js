@@ -2,17 +2,21 @@ var app = require("express")();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
 
+var rooms = "";
+
 app.get("/", function(req, res){
+    console.log(req.params.id)
+    rooms = req.params.id;
     res.sendFile(__dirname + '/index.html');
 });
 
-io.on("connection", function(socket){
+io.sockets.on("connection", function(socket){
     socket.on('login', function (data) {
         console.log("Message from Client: " + data.name);
         socket.name = data.name;
         socket.userid = data.userid;
-
-        io.emit('login', data.name);
+        socket.join(data.rooms);
+        io.emit('login %s in %s room', data.name, data.rooms);
     });
 
     socket.on('chat', function(data){
@@ -33,6 +37,8 @@ io.on("connection", function(socket){
         console.log('user disconnected: ' + socket.name);
     });
 });
+
+io.sockets.in(rooms).emit("chat", "test complete");
 
 server.listen(3000, function(){
     console.log("Socket IO server listening on port 3000")
